@@ -1,4 +1,5 @@
 from django import forms
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 
 class ReviewForm(forms.Form):
@@ -6,3 +7,13 @@ class ReviewForm(forms.Form):
         "required": "Your name must not be empty",
         "max_length": "Please enter a shorter name"
     })
+    review_text = forms.CharField(
+        label="Your feedback", widget=forms.Textarea, max_length=300)
+    rating = forms.FloatField(
+        label='Rating',
+        validators=[
+            MinValueValidator(1.0),
+            MaxValueValidator(5.0)
+        ],
+        widget=forms.NumberInput(attrs={'step': '0.1'})
+    )
