@@ -4,7 +4,7 @@ from django.http import HttpResponseRedirect
 
 
 from django.views import View
-from django.views.generic import TemplateView, ListView
+from django.views.generic import TemplateView, ListView, DetailView
 
 from .forms import ReviewForm
 from reviews.models import Review
@@ -35,6 +35,11 @@ class ReviewListView(ListView):
     model = Review
     template_name = "reviews/reviews.html"
     context_object_name = 'reviews'
+
+class DetailedView(DetailView):
+    model = Review
+    template_name = "reviews/single_review.html"
+    context_object_name = "review"
     
 
 
