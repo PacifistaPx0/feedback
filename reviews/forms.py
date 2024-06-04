@@ -1,4 +1,4 @@
-from django import forms
+from django.forms import ModelForm
 from django.core.validators import MinValueValidator, MaxValueValidator
 
 from .models import Review
@@ -20,8 +20,13 @@ from .models import Review
         widget=forms.NumberInput(attrs={'step': '0.1'})
     )"""
 
-class ReviewForm(forms.ModelForm):
+class ReviewForm(ModelForm):
     class Meta:
         model = Review
         fields = "__all__"
         # exlcude = ["owner_comment"]
+        labels = {
+            "user_name": "Your Name",
+            "review_text": "Your Feedback",
+            "rating": "Your Rating"
+        }
