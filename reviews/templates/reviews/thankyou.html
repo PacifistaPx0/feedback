@@ -1,11 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>your input has been recorded</h1>
-</body>
-</html>
+{% extends "reviews/base.html" %}
+
+{% block title %}
+    Received
+{% endblock  %}
+
+{% block body %}
+    <h1>Your Response has been recorded</h1>
+    <p>{{ message }}</p>
+{% endblock body %}
+
