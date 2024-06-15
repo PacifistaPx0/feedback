@@ -9,10 +9,14 @@ Single Review
         <p class="rating">Rating: {{ review.rating }} out of 5</p>
         <p>{{ review.review_text }}</p>
         <p>Reviewed by: {{ review.user_name }}</p>
-        <form action="/reviews/favorite" method="POST">
-            {% csrf_token %}
-            <input type="hidden" name="review_id" value="{{ review.id }}">
-            <button>Favorite</button>
-        </form>
+        {% if is_favorite %}
+            <p>This is my favorite!</p>
+        {% else %}
+            <form action="/reviews/favorite" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="review_id" value="{{ review.id }}">
+                <button>Favorite</button>
+            </form>
+        {% endif %}
     </div>
 {% endblock body %}
