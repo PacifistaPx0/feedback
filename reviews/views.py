@@ -62,7 +62,7 @@ class DetailedView(DetailView):
         context =  super().get_context_data(**kwargs)
         loaded_review = self.object 
         request = self.request
-        favorite_id = request.session["favorite_review"]
+        favorite_id = request.session.get("favorite_review") # safer way to access session
         context["is_favorite"] = favorite_id == str(loaded_review.id)
         return context
         
